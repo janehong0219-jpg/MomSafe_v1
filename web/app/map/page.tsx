@@ -2,7 +2,7 @@ import FriendlyMap from '@/components/Map';
 
 export default function MapPage() {
     return (
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto px-4 pt-32 pb-8">
             <div className="mb-6">
                 <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">
                     臺中市育兒友善地圖
