@@ -1,0 +1,211 @@
+// MomCoin 範例資料
+
+import type { MomCoinBalance, Transaction, Task, RewardProduct } from './momcoin';
+
+// 範例用戶餘額
+export const SAMPLE_BALANCE: MomCoinBalance = {
+    userId: 'user-1',
+    balance: 285,
+    totalEarned: 450,
+    totalBurned: 165,
+    level: 'explorer',
+    levelProgress: 65,
+    badges: ['first_verification', 'daily_warrior'],
+    expiringCoins: [
+        {
+            amount: 50,
+            expiryDate: new Date(2026, 2, 15), // 2026-03-15
+        },
+    ],
+    verificationCount: 18,
+    disputeReportCount: 1,
+    lastLoginDate: new Date(),
+};
+
+// 範例交易記錄
+export const SAMPLE_TRANSACTIONS: Transaction[] = [
+    {
+        id: 'tx-1',
+        userId: 'user-1',
+        type: 'earn_lbs_verification',
+        amount: 5,
+        balance: 285,
+        description: '驗證「星巴克中山店」友善設施',
+        metadata: { locationName: '星巴克中山店', locationId: 'loc-1' },
+        timestamp: new Date(2026, 0, 28, 14, 30),
+    },
+    {
+        id: 'tx-2',
+        userId: 'user-1',
+        type: 'earn_daily_login',
+        amount: 5,
+        balance: 280,
+        description: '每日登入獎勵',
+        timestamp: new Date(2026, 0, 28, 9, 0),
+    },
+    {
+        id: 'tx-3',
+        userId: 'user-1',
+        type: 'burn_product_redeem',
+        amount: -100,
+        balance: 275,
+        description: '兌換「有機米餅試用包」',
+        metadata: { productName: '有機米餅試用包', productId: 'prod-1' },
+        timestamp: new Date(2026, 0, 27, 16, 20),
+    },
+    {
+        id: 'tx-4',
+        userId: 'user-1',
+        type: 'earn_review',
+        amount: 50,
+        balance: 375,
+        description: '撰寫真實交易評論',
+        metadata: { caregiverName: '林保母' },
+        timestamp: new Date(2026, 0, 26, 20, 15),
+    },
+    {
+        id: 'tx-5',
+        userId: 'user-1',
+        type: 'earn_dispute_report',
+        amount: 50,
+        balance: 325,
+        description: '通報「甜甜圈店」爭議問題',
+        metadata: { locationName: '甜甜圈店', locationId: 'loc-5' },
+        timestamp: new Date(2026, 0, 25, 11, 40),
+    },
+];
+
+// 範例任務列表
+export const SAMPLE_TASKS: Task[] = [
+    {
+        id: 'task-1',
+        type: 'earn_lbs_verification',
+        category: 'lbs',
+        title: '驗證友善設施',
+        description: '這家店有兒童椅嗎？',
+        reward: 5,
+        location: {
+            name: '麥當勞台中店',
+            address: '台中市西屯區台灣大道三段 251 號',
+            lat: 24.163162,
+            lng: 120.643127,
+            distance: 150,
+        },
+        status: 'available',
+    },
+    {
+        id: 'task-2',
+        type: 'earn_lbs_verification',
+        category: 'lbs',
+        title: '驗證友善設施',
+        description: '這家店有尿布台嗎？',
+        reward: 5,
+        location: {
+            name: 'IKEA 台中店',
+            address: '台中市南屯區向上路二段 168 號',
+            lat: 24.140893,
+            lng: 120.641243,
+            distance: 320,
+        },
+        status: 'available',
+    },
+    {
+        id: 'task-3',
+        type: 'earn_dispute_report',
+        category: 'dispute',
+        title: '糾紛排雷',
+        description: '該店家被標記為「爭議（黃燈）」，請上傳現場照片證明規則',
+        reward: 50,
+        location: {
+            name: '某某餐廳',
+            address: '台中市北區三民路三段 100 號',
+            lat: 24.151297,
+            lng: 120.683318,
+            distance: 890,
+        },
+        status: 'available',
+    },
+    {
+        id: 'task-4',
+        type: 'earn_review',
+        category: 'review',
+        title: '評論保母服務',
+        description: '您使用過「王保母」的服務，請填寫詳細評價',
+        reward: 50,
+        status: 'available',
+        metadata: { caregiverId: 'cg-3', caregiverName: '王保母' },
+    },
+    {
+        id: 'task-5',
+        type: 'earn_community_answer',
+        category: 'community',
+        title: '回答新手問題',
+        description: '「寶寶半夜發燒怎麼辦？」- 需要有經驗的媽媽解答',
+        reward: 10,
+        status: 'available',
+        metadata: { questionId: 'q-12' },
+    },
+];
+
+// 範例兌換商品
+export const SAMPLE_PRODUCTS: RewardProduct[] = [
+    {
+        id: 'prod-1',
+        category: 'childcare',
+        name: '1 小時臨托折抵',
+        description: '可折抵平台上的保母媒合費或時薪，享受 Me Time！',
+        imageUrl: '/images/childcare-1h.jpg',
+        price: 500,
+        stock: -1,
+        metadata: { discountAmount: 150 },
+    },
+    {
+        id: 'prod-2',
+        category: 'childcare',
+        name: '半日臨托折抵',
+        description: '4 小時臨托折抵，讓妳好好休息一下',
+        imageUrl: '/images/childcare-4h.jpg',
+        price: 2000,
+        stock: -1,
+        metadata: { discountAmount: 600 },
+    },
+    {
+        id: 'prod-3',
+        category: 'product',
+        name: '有機米餅試用包',
+        description: '只送不賣！與 D2C 品牌合作的獨家試用包',
+        imageUrl: '/images/rice-cake.jpg',
+        price: 100,
+        stock: 50,
+    },
+    {
+        id: 'prod-4',
+        category: 'product',
+        name: '益智玩具折價券',
+        description: '合作品牌 500 元折價券',
+        imageUrl: '/images/toy-coupon.jpg',
+        price: 300,
+        stock: 30,
+    },
+    {
+        id: 'prod-5',
+        category: 'vip',
+        name: '台鐵親子車廂搶票助手',
+        description: '釋出座位即時通知功能，30 天訂閱',
+        imageUrl: '/images/train-alert.jpg',
+        price: 200,
+        stock: -1,
+        validDays: 30,
+        metadata: { featureCode: 'train_alert' },
+    },
+    {
+        id: 'prod-6',
+        category: 'vip',
+        name: '進階背景報告',
+        description: '查看保母的歷史詳細退托率與進階背景',
+        imageUrl: '/images/bg-check.jpg',
+        price: 150,
+        stock: -1,
+        metadata: { featureCode: 'advanced_bg_check' },
+    },
+];

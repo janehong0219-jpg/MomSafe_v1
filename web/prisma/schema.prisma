@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Nursery {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String?
+  city      String
+  district  String
+  address   String
+  type      String?  // Public/Private/Public-Private
+  joined    Boolean  @default(false) // Joined Semi-Public system?
+  createdAt DateTime @default(now())
+}
+
+model Hospital {
+  id        Int      @id @default(autoincrement()) // from CSV seq
+  code      String?  // 縣市別代碼
+  name      String
+  district  String
+  phone     String?
+  isBabyFriendly Boolean @default(true) // Assumed from file source
+}
+
+model PostpartumCenter {
+  id              Int      @id @default(autoincrement())
+  name            String
+  phone           String?
+  address         String
+  bedsPostpartum  Int      @default(0)
+  bedsInfant      Int      @default(0)
+  totalBeds       Int      @default(0)
+}
+
+model NursingRoom {
+  id        Int      @id @default(autoincrement())
+  code      String?
+  name      String
+  district  String
+  openHours String?
+}

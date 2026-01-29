@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Original Macaron Colors */
+  --color-macaron-pink: #F8E8E8;
+  --color-macaron-blue: #E8F4F8;
+  --color-macaron-green: #E8F8E8;
+
+  /* Child Monitor Aesthetic Palette */
+  --color-momsafe-pink: #FF8C69;
+  /* Warm Orange/Peach - Main CTA & Accent */
+  --color-momsafe-cream: #FFFBEC;
+  /* Very Light Creamy Yellow Background */
+  --color-momsafe-green: #9ED670;
+  /* Soft Green - Success/Health */
+  --color-momsafe-purple: #9886E5;
+  /* Soft Purple - Events/Diary */
+  --color-momsafe-yellow: #FFC26F;
+  /* Soft Ochre - Energy/Mood */
+  --color-momsafe-blue: #70BDD6;
+  /* Soft Blue - Water/Sleep */
+  --color-momsafe-text: #413D3A;
+  /* Dark Warm Gray/Brown Text */
+  --color-momsafe-text-light: #8E8883;
+  /* Muted Text */
+  --color-momsafe-card: #FFFFFF;
+  /* Pure White for Cards */
+
+  --animate-gradient-x: gradient-x 3s ease infinite;
+
+  @keyframes gradient-x {
+
+    0%,
+    100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background-color: var(--color-momsafe-cream);
+  color: var(--color-momsafe-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
